@@ -27,7 +27,9 @@ class _PermissionsView extends ConsumerWidget {
           value: true,
           title: const Text('Camara'),
           subtitle: const Text('Estado actual'),
-          onChanged: (value) {},
+          onChanged: (value) {
+            print('hola github');
+          },
         ),
       ],
     );
