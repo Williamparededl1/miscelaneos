@@ -17,7 +17,8 @@ class GyroscopeXYZ {
   }
 }
 
-final gyroscopeProvider = StreamProvider<GyroscopeXYZ>((ref) async* {
+final gyroscopeProvider =
+    StreamProvider.autoDispose<GyroscopeXYZ>((ref) async* {
   await for (final event in gyroscopeEventStream()) {
     final x = double.parse((event.x.toStringAsFixed(2)));
     final y = double.parse((event.y.toStringAsFixed(2)));
