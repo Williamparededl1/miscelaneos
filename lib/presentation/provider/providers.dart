@@ -3,3 +3,4 @@ export 'permissions/permissions_provider.dart';
 export 'sensors/gyroscope_provider.dart';
 export 'sensors/accelerometer_provider.dart';
 export 'sensors/magnetometer_provider.dart';
+export 'sensors/compass_provider.dart';
