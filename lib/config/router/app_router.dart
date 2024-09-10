@@ -11,23 +11,23 @@ final router = GoRouter(routes: [
     builder: (context, state) => const PermissionsScreen(),
   ),
   GoRoute(
-    path: '/permissions',
-    builder: (context, state) => const PermissionsScreen(),
+    path: '/gyroscope',
+    builder: (context, state) => const GyroscopeScreen(),
   ),
   GoRoute(
-    path: '/permissions',
-    builder: (context, state) => const PermissionsScreen(),
+    path: '/accelerometer',
+    builder: (context, state) => const AccelerometerScreen(),
   ),
   GoRoute(
-    path: '/permissions',
-    builder: (context, state) => const PermissionsScreen(),
+    path: '/magnetometer',
+    builder: (context, state) => const MagnetometerScreen(),
   ),
   GoRoute(
-    path: '/permissions',
-    builder: (context, state) => const PermissionsScreen(),
+    path: '/gyroscope-ball',
+    builder: (context, state) => const GyroscopeBallScreen(),
   ),
   GoRoute(
-    path: '/permissions',
-    builder: (context, state) => const PermissionsScreen(),
+    path: '/compass',
+    builder: (context, state) => const CompassScreen(),
   ),
 ]);
