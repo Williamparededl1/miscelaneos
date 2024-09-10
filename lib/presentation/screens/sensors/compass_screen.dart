@@ -19,9 +19,31 @@ class CompassScreen extends ConsumerWidget {
         title: const Text('Brujula', style: TextStyle(color: Colors.white)),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: const Center(
-        child: Text('Hola mundo'),
-      ),
+      body: const Compass(),
+    );
+  }
+}
+
+class Compass extends StatelessWidget {
+  const Compass({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(
+          '155',
+          style: TextStyle(color: Colors.white, fontSize: 30),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Stack(
+          children: [],
+        )
+      ],
     );
   }
 }
