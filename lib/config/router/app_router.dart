@@ -30,4 +30,8 @@ final router = GoRouter(routes: [
     path: '/compass',
     builder: (context, state) => const CompassScreen(),
   ),
+  GoRoute(
+    path: '/asklocation',
+    builder: (context, state) => const AskLocationScreen(),
+  ),
 ]);
