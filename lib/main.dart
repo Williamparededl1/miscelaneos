@@ -19,6 +19,7 @@ class MainAppState extends ConsumerState<MainApp> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    ref.read(permissionsProvider.notifier).checkPermissions();
   }
 
   @override
