@@ -10,4 +10,24 @@ final router = GoRouter(routes: [
     path: '/permissions',
     builder: (context, state) => const PermissionsScreen(),
   ),
+  GoRoute(
+    path: '/permissions',
+    builder: (context, state) => const PermissionsScreen(),
+  ),
+  GoRoute(
+    path: '/permissions',
+    builder: (context, state) => const PermissionsScreen(),
+  ),
+  GoRoute(
+    path: '/permissions',
+    builder: (context, state) => const PermissionsScreen(),
+  ),
+  GoRoute(
+    path: '/permissions',
+    builder: (context, state) => const PermissionsScreen(),
+  ),
+  GoRoute(
+    path: '/permissions',
+    builder: (context, state) => const PermissionsScreen(),
+  ),
 ]);
