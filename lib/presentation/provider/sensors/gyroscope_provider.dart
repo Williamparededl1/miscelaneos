@@ -10,9 +10,9 @@ class GyroscopeXYZ {
   @override
   String toString() {
     return '''
-          x:$x,
-          y:$y,
-          z:$z,
+    x:$x,
+    y:$y,
+    z:$z,
           ''';
   }
 }
