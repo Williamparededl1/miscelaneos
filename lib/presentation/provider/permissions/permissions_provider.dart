@@ -3,6 +3,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+final permissionsProvider =
+    StateNotifierProvider<PermissionsNotifier, PermissionsState>((ref) {
+  return PermissionsNotifier();
+});
+
 class PermissionsNotifier extends StateNotifier<PermissionsState> {
   PermissionsNotifier() : super(PermissionsState()) {
     checkPermissions();
