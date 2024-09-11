@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:miscelaneos/config/config.dart';
 import 'package:miscelaneos/domian/domain.dart';
 import 'package:miscelaneos/presentation/provider/providers.dart';
 
@@ -31,7 +32,11 @@ class _PokemonView extends StatelessWidget {
       appBar: AppBar(
         title: Text(pokemon.name),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.share_outlined))
+          IconButton(
+              onPressed: () {
+                SharePlugin.shareLink(pokemon.spriteFront, 'Mira este pokemon');
+              },
+              icon: const Icon(Icons.share_outlined))
         ],
       ),
       body: Center(
