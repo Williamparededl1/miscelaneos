@@ -34,7 +34,8 @@ class _PokemonView extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                SharePlugin.shareLink(pokemon.spriteFront, 'Mira este pokemon');
+                SharePlugin.shareLink(
+                    pokemon.spriteFront, 'Mira ese pokemon papa');
               },
               icon: const Icon(Icons.share_outlined))
         ],
