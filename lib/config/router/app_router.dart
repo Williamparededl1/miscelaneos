@@ -34,4 +34,8 @@ final router = GoRouter(routes: [
     path: '/asklocation',
     builder: (context, state) => const AskLocationScreen(),
   ),
+  GoRoute(
+    path: '/pokemons',
+    builder: (context, state) => const PokemonsScreen(),
+  ),
 ]);
