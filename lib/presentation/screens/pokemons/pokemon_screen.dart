@@ -30,6 +30,9 @@ class _PokemonView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(pokemon.name),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.share_outlined))
+        ],
       ),
       body: Center(
         child: Image.network(
