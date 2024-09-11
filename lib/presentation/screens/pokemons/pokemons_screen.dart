@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:miscelaneos/presentation/provider/providers.dart';
 
 class PokemonsScreen extends StatelessWidget {
@@ -81,6 +82,7 @@ class _PokemosGrid extends ConsumerWidget {
       itemCount: pokemonsIds.length,
       itemBuilder: (context, index) {
         return GestureDetector(
+          onTap: () => context.push('/pokemons/${index + 1}'),
           child: Image.network(
               'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png',
               fit: BoxFit.cover),
