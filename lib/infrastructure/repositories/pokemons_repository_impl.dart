@@ -4,7 +4,7 @@ import 'package:miscelaneos/infrastructure/datasources/pokemons_datasource_impl.
 class PokemonsRepositoryImpl implements PokemonsRepository {
   final PokemonsDatasource datasource;
 
-  PokemonsRepositoryImpl(PokemonsDatasource? datasource)
+  PokemonsRepositoryImpl({PokemonsDatasource? datasource})
       : datasource = datasource ?? PokemonsDatasourceImpl();
 
   @override
