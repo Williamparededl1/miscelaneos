@@ -8,6 +8,7 @@ class LocationScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userLocationAsync = ref.watch(userLocationProvider);
+    final watchLocationAsync = ref.watch(watchLocationProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -29,6 +30,13 @@ class LocationScreen extends ConsumerWidget {
               height: 30,
             ),
             const Text('Seguimiento de Ubicacion'),
+            const SizedBox(
+              height: 10,
+            ),
+            watchLocationAsync.when(
+                data: (data) => Text('$data'),
+                error: (error, stackTrace) => Text('$error'),
+                loading: () => const CircularProgressIndicator()),
           ],
         ),
       ),
