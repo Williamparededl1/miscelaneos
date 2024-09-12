@@ -35,7 +35,8 @@ final userLocationProvider =
 
   // When we reach here, permissions are granted and we can
   // continue accessing the position of the device.
+  print('calculando');
   final location = await Geolocator.getCurrentPosition();
-
+  print(location);
   return (location.latitude, location.longitude);
 });
