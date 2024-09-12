@@ -17,6 +17,10 @@ class MapState {
       this.markers = const [],
       this.controller});
 
+  Set<Marker> get markersSet {
+    return Set.from(markers);
+  }
+
   MapState copyWith({
     bool? isReady,
     bool? followUser,
@@ -33,7 +37,12 @@ class MapState {
 
 class MapNotifier extends StateNotifier<MapState> {
   StreamSubscription? userLocation$;
-  MapNotifier() : super(MapState());
+  (double, double)? lastKnowLocation;
+  MapNotifier() : super(MapState()) {
+    trackUser().listen(
+      (event) => lastKnowLocation = (event.$1, event.$2),
+    );
+  }
 
   Stream<(double, double)> trackUser() async* {
     await for (final pos in Geolocator.getPositionStream()) {
@@ -67,6 +76,14 @@ class MapNotifier extends StateNotifier<MapState> {
       userLocation$?.cancel();
     }
   }
+
+  findUser() {
+    if (lastKnowLocation == null) return;
+    final (latitude, longitude) = lastKnowLocation!;
+    goToLocation(latitude, longitude);
+  }
+
+  void addmarket(double latitude, double longitude, String name) {}
 }
 
 final mapControllerProvider =

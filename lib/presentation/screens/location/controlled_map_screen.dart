@@ -58,9 +58,7 @@ class MapAndControls extends ConsumerWidget {
           left: 5,
           child: IconButton.filledTonal(
               onPressed: () {
-                ref
-                    .read(mapControllerProvider.notifier)
-                    .goToLocation(latitude, longitude);
+                ref.read(mapControllerProvider.notifier).findUser();
               },
               icon: const Icon(Icons.location_searching_outlined)),
         ),
@@ -79,7 +77,10 @@ class MapAndControls extends ConsumerWidget {
           bottom: 140,
           left: 5,
           child: IconButton.filledTonal(
-              onPressed: () {}, icon: const Icon(Icons.pin_drop_outlined)),
+              onPressed: () {
+                ref.read(mapControllerProvider.notifier).findUser();
+              },
+              icon: const Icon(Icons.pin_drop_outlined)),
         ),
       ],
     );
@@ -99,7 +100,9 @@ class _MapView extends ConsumerStatefulWidget {
 class MapViewState extends ConsumerState<_MapView> {
   @override
   Widget build(BuildContext context) {
+    final mapcontrolled = ref.watch(mapControllerProvider);
     return GoogleMap(
+      markers: mapcontrolled.markersSet,
       mapType: MapType.normal,
       initialCameraPosition: CameraPosition(
           target: LatLng(widget.initialLat, widget.initialLng), zoom: 25),
