@@ -9,10 +9,10 @@ class ControlledMapScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final watchLocationAsync = ref.watch(watchLocationProvider);
+    final userLocationAsync = ref.watch(userLocationProvider);
 
     return Scaffold(
-      body: watchLocationAsync.when(
+      body: userLocationAsync.when(
         data: (data) => MapAndControls(
           latitude: data.$1,
           longitude: data.$2,
@@ -28,7 +28,7 @@ class ControlledMapScreen extends ConsumerWidget {
   }
 }
 
-class MapAndControls extends StatelessWidget {
+class MapAndControls extends ConsumerWidget {
   final double latitude;
   final double longitude;
 
@@ -36,7 +36,8 @@ class MapAndControls extends StatelessWidget {
       {super.key, required this.latitude, required this.longitude});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mapControllerState = ref.watch(mapControllerProvider);
     return Stack(
       children: [
         _MapView(
@@ -56,14 +57,23 @@ class MapAndControls extends StatelessWidget {
           bottom: 40,
           left: 5,
           child: IconButton.filledTonal(
-              onPressed: () {},
+              onPressed: () {
+                ref
+                    .read(mapControllerProvider.notifier)
+                    .goToLocation(latitude, longitude);
+              },
               icon: const Icon(Icons.location_searching_outlined)),
         ),
         Positioned(
           bottom: 90,
           left: 5,
           child: IconButton.filledTonal(
-              onPressed: () {}, icon: const Icon(Icons.directions_run)),
+              onPressed: () {
+                ref.read(mapControllerProvider.notifier).toogleFollowUser();
+              },
+              icon: mapControllerState.followUser
+                  ? const Icon(Icons.directions_run)
+                  : const Icon(Icons.accessibility_new_outlined)),
         ),
         Positioned(
           bottom: 140,
@@ -76,17 +86,17 @@ class MapAndControls extends StatelessWidget {
   }
 }
 
-class _MapView extends StatefulWidget {
+class _MapView extends ConsumerStatefulWidget {
   final double initialLat;
   final double initialLng;
 
   const _MapView({required this.initialLat, required this.initialLng});
 
   @override
-  State<_MapView> createState() => _MapViewState();
+  MapViewState createState() => MapViewState();
 }
 
-class _MapViewState extends State<_MapView> {
+class MapViewState extends ConsumerState<_MapView> {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
@@ -97,6 +107,7 @@ class _MapViewState extends State<_MapView> {
       myLocationButtonEnabled: false,
       onMapCreated: (GoogleMapController controller) {
         // _controller.complete(controller);
+        ref.read(mapControllerProvider.notifier).setMapController(controller);
       },
     );
   }
