@@ -67,6 +67,7 @@ class MapNotifier extends StateNotifier<MapState> {
   toogleFollowUser() {
     state = state.copyWith(followUser: !state.followUser);
     if (state.followUser) {
+      findUser();
       userLocation$ = trackUser().listen(
         (event) {
           goToLocation(event.$1, event.$2);
@@ -83,10 +84,26 @@ class MapNotifier extends StateNotifier<MapState> {
     goToLocation(latitude, longitude);
   }
 
-  void addmarket(double latitude, double longitude, String name) {}
+  void addMarkerCurrentPosition() {
+    if (lastKnowLocation == null) return;
+    final (latitude, longitude) = lastKnowLocation!;
+    addmarket(latitude, longitude, 'Por aqui paso');
+  }
+
+  void addmarket(double latitude, double longitude, String name) {
+    final newMarket = Marker(
+        markerId: MarkerId('${state.markers.length}'),
+        position: LatLng(latitude, longitude),
+        infoWindow: InfoWindow(
+          title: name,
+          snippet: 'Marcador activo',
+        ));
+
+    state = state.copyWith(markers: [...state.markers, newMarket]);
+  }
 }
 
 final mapControllerProvider =
-    StateNotifierProvider<MapNotifier, MapState>((ref) {
+    StateNotifierProvider.autoDispose<MapNotifier, MapState>((ref) {
   return MapNotifier();
 });

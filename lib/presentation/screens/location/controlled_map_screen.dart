@@ -78,7 +78,9 @@ class MapAndControls extends ConsumerWidget {
           left: 5,
           child: IconButton.filledTonal(
               onPressed: () {
-                ref.read(mapControllerProvider.notifier).findUser();
+                ref
+                    .read(mapControllerProvider.notifier)
+                    .addMarkerCurrentPosition();
               },
               icon: const Icon(Icons.pin_drop_outlined)),
         ),
@@ -111,6 +113,10 @@ class MapViewState extends ConsumerState<_MapView> {
       onMapCreated: (GoogleMapController controller) {
         // _controller.complete(controller);
         ref.read(mapControllerProvider.notifier).setMapController(controller);
+      },
+      onLongPress: (argument) {
+        ref.read(mapControllerProvider.notifier).addmarket(
+            argument.latitude, argument.longitude, 'Marcador Personalizado');
       },
     );
   }
