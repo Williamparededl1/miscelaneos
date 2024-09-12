@@ -7,7 +7,19 @@ class LocationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('LocationScreen'),
+        title: const Text('Ubicacion'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Ubicacion Actual'),
+            const SizedBox(
+              height: 30,
+            ),
+            const Text('Seguimiento de Ubicacion'),
+          ],
+        ),
       ),
     );
   }
