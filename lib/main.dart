@@ -6,6 +6,9 @@ import 'package:miscelaneos/presentation/provider/providers.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  QuickActionsPlugin.registerActions();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
