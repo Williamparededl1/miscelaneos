@@ -8,23 +8,35 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              title: const Text('Miscelanios'),
-              actions: [
-                IconButton(
-                    onPressed: () {
-                      context.push('/permissions');
-                    },
-                    icon: const Icon(Icons.settings))
-              ],
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    title: const Text('Miscelanios'),
+                    actions: [
+                      IconButton(
+                          onPressed: () {
+                            context.push('/permissions');
+                          },
+                          icon: const Icon(Icons.settings))
+                    ],
+                  ),
+                  const MainMenu(),
+                ],
+              ),
             ),
-            const MainMenu(),
-          ],
-        ),
+          ),
+
+          // Ad banner
+          Container(
+            color: Colors.amber,
+            height: 75,
+          )
+        ],
       ),
     );
   }
