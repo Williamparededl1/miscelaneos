@@ -35,6 +35,10 @@ final router = GoRouter(routes: [
     builder: (context, state) => const AskLocationScreen(),
   ),
   GoRoute(
+    path: '/biometric',
+    builder: (context, state) => const BiometricScreen(),
+  ),
+  GoRoute(
     path: '/pokemons',
     builder: (context, state) => const PokemonsScreen(),
     routes: [
