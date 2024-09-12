@@ -23,7 +23,7 @@ class QuickActionsPlugin {
 
     quickActions.setShortcutItems(<ShortcutItem>[
       const ShortcutItem(
-          type: 'biometric', localizedTitle: 'Biometric', icon: 'biometric'),
+          type: 'biometric', localizedTitle: 'Biometric', icon: 'finger'),
       const ShortcutItem(
           type: 'compass', localizedTitle: 'Compass', icon: 'compass'),
       const ShortcutItem(
