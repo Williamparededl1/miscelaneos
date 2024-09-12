@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:miscelaneos/config/config.dart';
 import 'package:miscelaneos/presentation/provider/providers.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await AdmobPlugin.initialize();
   QuickActionsPlugin.registerActions();
 
   SystemChrome.setPreferredOrientations([
