@@ -21,6 +21,8 @@ final menuItems = <MenuItem>[
   MenuItem('Ubicacion', Icons.pin_drop_outlined, '/location'),
   MenuItem('Mapa', Icons.map_outlined, '/map'),
   MenuItem('Seguimiento', Icons.gamepad_outlined, '/controlled-map'),
+  MenuItem('Ad Full', Icons.ad_units_outlined, '/ad-screen'),
+  MenuItem('Ad Reward', Icons.monetization_on_outlined, '/ad-rewarded'),
 ];
 
 class MainMenu extends StatelessWidget {
