@@ -28,6 +28,16 @@ class LocalAuthState {
         status: status ?? this.status,
         message: message ?? this.message,
       );
+
+  @override
+  String toString() {
+    return '''
+    
+    didAuthenticate: $didAuthenticate
+    status: $status
+    message: $message
+    ''';
+  }
 }
 
 class LocalAuthNotifier extends StateNotifier<LocalAuthState> {
