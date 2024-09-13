@@ -12,3 +12,4 @@ export 'location/watch_location_provider.dart';
 export 'location/map_controller_provider.dart';
 export 'ads/admob_providers.dart';
 export 'ads/admob_points.dart';
+export 'ads/shows_ads_provider.dart';

@@ -22,6 +22,7 @@ class _PermissionsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final permissions = ref.watch(permissionsProvider);
+    final showAds = ref.watch(showsAdsProvider);
 
     return ListView(
       children: [
@@ -59,6 +60,15 @@ class _PermissionsView extends ConsumerWidget {
           subtitle: Text('Estado ${permissions.location}'),
           onChanged: (value) {
             ref.read(permissionsProvider.notifier).requestLocationAccess();
+          },
+        ),
+        CheckboxListTile(
+          secondary: const Icon(Icons.location_on_outlined),
+          value: showAds,
+          title: const Text('Mostrar Publicidad'),
+          subtitle: Text('Estado $showAds'),
+          onChanged: (value) {
+            ref.read(showsAdsProvider.notifier).toggleAds();
           },
         ),
       ],
