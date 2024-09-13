@@ -14,10 +14,9 @@ void callbackDispatcher() {
         await loadNextPokemon();
         break;
       case fetchPeriodicBackgroundTaskKey:
-        print('fetchPeriodicBackgroundTaskKey');
+        await loadNextPokemon();
         break;
       case Workmanager.iOSBackgroundTask:
-        print('Workmanager.iOSBackgroundTask');
         break;
     }
     return true;
@@ -33,8 +32,7 @@ Future loadNextPokemon() async {
         await pokemonRepository.getPokemon('$lastPokemonId');
     if (pokemon == null) throw message;
     await localDbRepository.insertPokemon(pokemon);
-    print('pokemon insertado ${pokemon.name}');
   } catch (e) {
-    print('$e');
+    throw '$e';
   }
 }

@@ -11,6 +11,7 @@ class DbPokemonsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pokemonsAsync = ref.watch(pokemonsDbProvider);
+    final isBackgroundFetchActive = ref.watch(backgroundPokemonFetchProvider);
     if (pokemonsAsync.isLoading) {
       return const Scaffold(
         body: Center(
@@ -42,9 +43,11 @@ class DbPokemonsScreen extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          //todo tarea periodico
+          ref.read(backgroundPokemonFetchProvider.notifier).toggleProcess();
         },
-        label: const Text('Activar Periodico'),
+        label: (isBackgroundFetchActive == true)
+            ? const Text('Desactivar Periodico')
+            : const Text('Activar Periodico'),
         icon: const Icon(Icons.av_timer),
       ),
     );
