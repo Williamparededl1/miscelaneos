@@ -14,16 +14,16 @@ void main() async {
       isInDebugMode:
           true // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
       );
-  Workmanager().registerOneOffTask("com.williamParedes.miselanios.simpleTask1",
-      "com.williamParedes.miselanios.simpleTask",
-      inputData: {'hola': 'Perro'},
-      constraints: Constraints(
-        networkType: NetworkType.connected,
-        // requiresBatteryNotLow: true,
-        // requiresCharging: true,
-        // requiresDeviceIdle: true,
-        // requiresStorageNotLow: true
-      ));
+  // Workmanager().registerOneOffTask("com.williamParedes.miselanios.simpleTask1",
+  //     "com.williamParedes.miselanios.simpleTask",
+  //     inputData: {'hola': 'Perro'},
+  //     constraints: Constraints(
+  //       networkType: NetworkType.connected,
+  //       // requiresBatteryNotLow: true,
+  //       // requiresCharging: true,
+  //       // requiresDeviceIdle: true,
+  //       // requiresStorageNotLow: true
+  //     ));
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);

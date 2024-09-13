@@ -23,6 +23,7 @@ final menuItems = <MenuItem>[
   MenuItem('Seguimiento', Icons.gamepad_outlined, '/controlled-map'),
   MenuItem('Ad Full', Icons.ad_units_outlined, '/ad-screen'),
   MenuItem('Ad Reward', Icons.monetization_on_outlined, '/ad-rewarded'),
+  MenuItem('Pokedex', Icons.book_rounded, '/db-pokemons'),
 ];
 
 class MainMenu extends StatelessWidget {
