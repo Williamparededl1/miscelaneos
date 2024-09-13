@@ -12,3 +12,9 @@ cd android
 ```
 
 ## Cambiar API keys de Google Maps
+
+
+## Generador de codigo Isar
+```
+flutter pub run build_runner build
+```
