@@ -4,7 +4,7 @@ import 'package:workmanager/workmanager.dart';
 const fetchBackgroundTaskKey =
     'com.williamParedes.miselanios.fetch-background-pokemon';
 const fetchPeriodicBackgroundTaskKey =
-    'com.williamParedes.miselanios.fetch-periodic-background-pokemon';
+    'com.williamParedes.miselanios.fetch-background-pokemon';
 
 @pragma('vm:entry-point')
 void callbackDispatcher() {
