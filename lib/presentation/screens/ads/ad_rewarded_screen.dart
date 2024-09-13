@@ -8,6 +8,7 @@ class AdRewardedScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final adRewardedAsync = ref.watch(adRewardedProvider);
+    final userpoints = ref.watch(adPointsProvider);
 
     ref.listen(
       adRewardedProvider,
@@ -16,7 +17,11 @@ class AdRewardedScreen extends ConsumerWidget {
         if (next.value == null) return;
 
         next.value!.show(
-          onUserEarnedReward: (ad, reward) {},
+          onUserEarnedReward: (ad, reward) {
+            ref.read(adPointsProvider.notifier).update(
+                  (state) => state + 10,
+                );
+          },
         );
       },
     );
@@ -32,8 +37,8 @@ class AdRewardedScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Ad Rewarded'),
       ),
-      body: const Center(
-        child: Text('Tienes esta cantidad de puntos XX'),
+      body: Center(
+        child: Text('Tienes esta cantidad de puntos $userpoints'),
       ),
     );
   }
